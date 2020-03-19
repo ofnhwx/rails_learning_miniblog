@@ -8,10 +8,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header
-      %nav.navbar.fixed-top.navbar-dark.bg-dark
-        .container
-          = link_to 'ミニブログ', root_path, class: 'navbar-brand'
+    = render 'shared/header'
     %main
       .container
         = yield
