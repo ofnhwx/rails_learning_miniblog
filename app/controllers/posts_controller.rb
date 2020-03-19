@@ -4,11 +4,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      flash[:success] = ['投稿しました！']
+      flash[:success] = '投稿しました！'
+      redirect_to root_url
     else
-      flash[:danger] = @post.errors.full_messages
+      # TODO: この後でページを移動したりするとまずい
+      #       具体的にどうするかは後で考える
+      @pagy, @feeds = pagy(Post.all)
+      render 'home/index'
     end
-    redirect_to root_url
   end
 
   private
