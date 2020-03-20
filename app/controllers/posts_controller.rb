@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   include Pagy::Backend
+  before_action :authenticate_user!, only: %i[create]
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = '投稿しました！'
       redirect_to root_url
