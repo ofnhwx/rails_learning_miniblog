@@ -1,0 +1,10 @@
+.row
+  .col
+    - if !user_signed_in?
+      .alert.alert-info
+        投稿するには
+        = link_to 'ログイン', new_user_session_path, class: 'alert-link'
+        するか、
+        = link_to 'アカウントを登録', new_user_registration_path, class: 'alert-link'
+        してください。
+    = render 'posts/posts'

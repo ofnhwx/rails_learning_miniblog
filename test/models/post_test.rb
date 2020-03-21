@@ -2,11 +2,17 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   def setup
-    @post = Post.new(content: '短文を投稿できるよ')
+    @user = users(:one)
+    @post = @user.posts.build(content: '短文を投稿できるよ')
   end
 
   test '有効な投稿' do
     assert @post.valid?
+  end
+
+  test 'ユーザーIDは必須' do
+    @post.user = nil
+    assert_not @post.valid?
   end
 
   test '投稿内容は必須' do

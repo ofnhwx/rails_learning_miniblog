@@ -1,0 +1,22 @@
+%header
+  %nav.navbar.fixed-top.navbar-dark.bg-dark.navbar-expand-lg
+    = link_to 'ミニブログ', root_path, class: 'navbar-brand'
+    %button.navbar-toggler{type: 'button',
+                           data: {toggle:'collapse', target: '#navbar'},
+                           aria: {controls: 'navbar', expanded: 'false', label: 'Toggle navigation' } }
+      %span.navbar-toggler-icon
+    #navbar.collapse.navbar-collapse
+      %span.navbar-nav.mr-auto
+      %ul.navbar-nav
+        - if user_signed_in?
+          %li.nav-item
+            = link_to '新規投稿', new_post_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'アカウント', edit_user_registration_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete
+        - else
+          %li.nav-item
+            = link_to '新規登録', new_user_registration_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'ログイン', new_user_session_path, class: 'nav-link'
