@@ -1,13 +1,8 @@
 .row
-  .col-lg-4
+  .col
     = form_for(@post) do |f|
       = render 'shared/errors', object: f.object
       .field
         = f.text_area :content, class: 'w-100'
       .text-right
         = f.submit '投稿', class: 'btn btn-primary right'
-  .col-lg-8
-    - if @feeds.any?
-      %ul.list-unstyled.mt-2.mt-lg-0
-        = render @feeds
-      != pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
