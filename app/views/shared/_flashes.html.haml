@@ -1,6 +1,6 @@
 - if flash.any?
   - flash.each do |type, msg|
-    %div{class: "alert alert-#{type} alert-dismissible"}
+    %div{class: "alert alert-#{convert_to_bootstrap_alert_type(type)} alert-dismissible"}
       = msg
       %button.close{type: 'button', data: {dismiss: 'alert'}, aria: {label: 'Close'}}
         %span{aria: {hidden: 'true'}}
