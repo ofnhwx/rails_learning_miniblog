@@ -6,7 +6,9 @@
                            aria: {controls: 'navbar', expanded: 'false', label: 'Toggle navigation' } }
       %span.navbar-toggler-icon
     #navbar.collapse.navbar-collapse
-      %span.navbar-nav.mr-auto
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          = link_to '全体タイムライン', posts_path, class: 'nav-link'
       %ul.navbar-nav
         - if user_signed_in?
           %li.nav-item
