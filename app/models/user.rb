@@ -29,4 +29,10 @@ class User < ApplicationRecord
   def following?(other)
     following.include? other
   end
+
+  def feed
+    Post.where('user_id = :current_user_id OR user_id IN (:following_ids)',
+               current_user_id: id,
+               following_ids: active_relationships.pluck(:followed_id))
+  end
 end
