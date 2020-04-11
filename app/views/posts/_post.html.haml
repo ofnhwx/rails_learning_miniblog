@@ -2,4 +2,6 @@
   .post.border.rounded-lg.p-2{ id: "post-#{post.id}" }
     .username= link_to post.user.username, user_path(post.user)
     .content= simple_format h(post.content)
-    .timestamp.small.text-muted= post.created_at
+    .small
+      %span= "#{post.favorites.count} いいね"
+      %span.timestamp= link_to post.created_at, post, class: 'text-muted'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   include Pagy::Backend
   before_action :authenticate_user!, only: %i[new create]
@@ -5,6 +7,10 @@ class PostsController < ApplicationController
 
   def index
     @pagy, @posts = pagy(Post.all)
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def new
