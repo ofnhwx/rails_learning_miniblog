@@ -13,10 +13,4 @@ class FavoritesController < ApplicationController
     current_user.unlike(@post)
     redirect_to @post
   end
-
-  private
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
 end

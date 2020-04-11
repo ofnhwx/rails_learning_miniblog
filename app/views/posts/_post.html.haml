@@ -3,5 +3,5 @@
     .username= link_to post.user.username, user_path(post.user)
     .content= simple_format h(post.content)
     .small
-      %span= "#{post.favorites_count} いいね"
-      %span.timestamp= link_to post.created_at, post, class: 'text-muted'
+      %span= link_to "#{post.favorites_count} いいね", favorited_by_post_path(post)
+      %span.timestamp= link_to post.created_at, post

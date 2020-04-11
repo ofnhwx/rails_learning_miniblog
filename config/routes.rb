@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       post 'like', to: 'favorites#create'
       delete 'unlike', to: 'favorites#destroy'
+      get 'favorited_by', to: 'posts#favorited_by'
     end
   end
   resources :relationships, only: %i[create destroy]

@@ -1,0 +1,6 @@
+.row
+  .col
+    %h1= 'いいねしたユーザー'
+    - if @post.favorited_by.any?
+      %ul.list-unstyled.mt-2
+        = render @post.favorited_by

@@ -3,7 +3,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites
-  has_many :favorteed_by, through: :favorites, source: :user
+  has_many :favorited_by, through: :favorites, source: :user
 
   default_scope -> { order(created_at: :desc) }
 
