@@ -4,7 +4,7 @@
       .username= link_to @post.user.username, @post.user
       .content= simple_format h(@post.content)
       .small
-        %span= "#{@post.favorites.count} いいね"
+        %span= "#{@post.favorites_count} いいね"
         %span.timestamp.text-muted= @post.created_at
     - unless current_user.id == @post.user_id
       - if current_user.like? @post
