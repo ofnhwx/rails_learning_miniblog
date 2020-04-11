@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
@@ -8,10 +10,14 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: :post
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        format: { with: /\A[a-zA-Z]+\z/ },
@@ -28,6 +34,18 @@ class User < ApplicationRecord
 
   def following?(other)
     following.include? other
+  end
+
+  def like(post)
+    favorite_posts << post
+  end
+
+  def unlike(post)
+    favorite_posts.destroy post
+  end
+
+  def like?(post)
+    favorite_posts.include? post
   end
 
   def feed
