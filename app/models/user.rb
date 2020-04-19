@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :favorites
   has_many :favorite_posts, through: :favorites, source: :post
+  has_many :comments, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -9,7 +9,9 @@ class PostsController < ApplicationController
     @pagy, @posts = pagy(Post.all)
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def favorited_by; end
 

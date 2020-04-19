@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
   resources :posts, only: %i[index show new create] do
     member do
+      resources :comments, only: %i[create]
       post 'like', to: 'favorites#create'
       delete 'unlike', to: 'favorites#destroy'
       get 'favorited_by', to: 'posts#favorited_by'

@@ -7,9 +7,19 @@
         %span= link_to "#{@post.favorites_count} いいね", favorited_by_post_path(@post)
         %span.timestamp.text-muted= @post.created_at
     - unless current_user.id == @post.user_id
-      - if current_user.like? @post
-        = form_tag unlike_post_path, method: :delete do
-          = submit_tag 'いいね解除', class: 'btn btn-secondary'
-      - else
-        = form_tag like_post_path, method: :post do
-          = submit_tag 'いいね', class: 'btn btn-primary'
+      .mt-2
+        - if current_user.like? @post
+          = form_tag unlike_post_path, method: :delete do
+            = submit_tag 'いいね解除', class: 'btn btn-secondary'
+        - else
+          = form_tag like_post_path, method: :post do
+            = submit_tag 'いいね', class: 'btn btn-primary'
+    .mt-3
+      = form_for(@comment) do |f|
+        = render 'shared/errors', object: f.object
+        .field
+          = f.text_area :text
+        = f.submit 'コメント', class: 'btn btn-primary'
+    - if @post.comments.any?
+      .mt-2
+        = render @post.comments
