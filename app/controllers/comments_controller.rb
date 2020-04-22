@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
     if @comment.save
+      CommentMailer.notify.deliver_now
       redirect_to @post
     else
       render 'posts/show'
