@@ -1,13 +1,9 @@
+# frozen_string_literal: true
+
 class CommentMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.comment_mailer.notify.subject
-  #
-  def notify
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def notify(comment)
+    @greeting = 'Hi'
+    @comment = comment
+    mail to: comment.post.user.email
   end
 end
