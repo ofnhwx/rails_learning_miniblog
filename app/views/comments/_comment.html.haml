@@ -1,4 +1,6 @@
-.row
-  .col{ id: "comment-#{comment.id}" }
-    .text= comment.text
-    .timestamp= comment.created_at
+.row.mb-2
+  .col
+    .comment.border.rounded-lg.p-2{ id: "comment-#{comment.id}" }
+      .username= link_to comment.post.user.username, comment.post.user
+      .text= comment.text
+      .timestamp.small= comment.created_at

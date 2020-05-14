@@ -15,11 +15,12 @@
           = form_tag like_post_path, method: :post do
             = submit_tag 'いいね', class: 'btn btn-primary'
     .mt-3
+      %h3= 'コメント'
       = form_for(@comment) do |f|
         = render 'shared/errors', object: f.object
         .field
           = f.text_area :text
-        = f.submit 'コメント', class: 'btn btn-primary'
+        = f.submit '投稿', class: 'btn btn-primary'
     - if @post.comments.any?
       .mt-2
         = render @post.comments
