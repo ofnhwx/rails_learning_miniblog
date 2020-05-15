@@ -1,2 +1,8 @@
-%h1= 'Comment#notify'
-%p= @greeting + ", find me in app/views/comment_mailer/notify.html.haml"
+%h1= '新しいコメントがあります'
+%p.post
+  %div= '投稿'
+  .content= @comment.post.content
+%p.comment
+  %div= 'コメント'
+  .text= @comment.text
+  .by= "(#{@comment.user.username} さんから)"

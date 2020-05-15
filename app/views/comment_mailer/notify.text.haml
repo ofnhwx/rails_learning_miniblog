@@ -1,3 +1,10 @@
-Comment#notify
+新しいコメントがあります。
 
-= @greeting + ", find me in app/views/comment_mailer/notify.text.haml"
+
+【投稿】
+= @comment.post.content
+
+
+【コメント】
+= @comment.text
+= "(#{@comment.user.username} さんから)"
