@@ -16,6 +16,7 @@ gem 'devise', '~> 4.7.1'
 gem 'devise-i18n', '~> 1.9.0'
 gem 'devise-bootstrap-views', '~> 1.1.0'
 gem 'counter_culture', '~> 2.3.0'
+gem 'carrierwave', '~> 2.1.0'
 
 group :production do
   gem 'pg', '~> 1.2', '>= 1.2.3'
