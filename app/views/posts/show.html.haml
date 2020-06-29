@@ -6,7 +6,7 @@
       .small
         %span= link_to "#{@post.favorites_count} いいね", favorited_by_post_path(@post)
         %span.timestamp.text-muted= @post.created_at
-    - unless current_user.id == @post.user_id
+    - if current_user && current_user.id != @post.user_id
       .mt-2
         - if current_user.like? @post
           = form_tag unlike_post_path, method: :delete do
