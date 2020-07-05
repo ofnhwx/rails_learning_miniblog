@@ -8,7 +8,7 @@ namespace :send_mail do
       p '前日に「いいね」された投稿がありません.'
     else
       User.all.each do |user|
-        PostMailer.send_most_favorited_yesterday(user, posts)
+        PostMailer.send_most_favorited_yesterday(user, posts).deliver_now
       end
     end
   end
