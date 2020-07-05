@@ -1,0 +1,12 @@
+昨日のいいねランキングを送信します。
+\
+= '--------------------------------'
+- @posts.each_with_index do |post, i|
+  = "【#{i + 1}位】#{post.favorites_count} いいね"
+  \
+  ■ ユーザー
+  = post.user.username
+  \
+  ■ 投稿内容
+  = post.content
+  = '--------------------------------'
