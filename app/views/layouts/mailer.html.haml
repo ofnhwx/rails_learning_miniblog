@@ -3,6 +3,30 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     :css
-      /* Email styles need to be inline */
+      .font-bold {
+        font-weight: bold;
+      }
+      .font-small {
+        font-size: small;
+      }
+      .padding-top-5 {
+        padding-top: 5px;
+      }
+      .padding-bottom-5 {
+        padding-bottom: 5px;
+      }
+      .border-radius {
+        max-width: 720px;
+        padding: 10px;
+        border: solid 2px #dee2e6;
+        border-radius: 5px;
+      }
+      .border-top {
+        border-top: solid 1px #dee2e6;
+      }
+      .border-bottom {
+        border-bottom: solid 1px #dee2e6;
+      }
+    = yield :css
   %body
     = yield
