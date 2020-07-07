@@ -1,0 +1,32 @@
+:css
+  .rank {
+    font-weight: bold;
+  }
+  .post {
+    max-width: 720px;
+    padding: 10px;
+    border: solid 2px #dee2e6;
+    border-radius: 5px;
+  }
+  .username {
+    padding-bottom: 5px;
+    border-bottom: solid 1px #dee2e6;
+  }
+  .small {
+    font-size: small;
+    padding-top: 5px;
+    border-top: solid 1px #dee2e6;
+  }
+%p
+  昨日のいいねランキングを送信します。
+- @posts.each_with_index do |post, i|
+  %div
+    .font-bold= "【#{i + 1}位】#{post.favorites_count} いいね"
+    .border-radius
+      .border-bottom.padding-bottom-5= link_to post.user.username, user_url(post.user)
+      %div= simple_format h(post.content)
+      - if post.image.present?
+        %div= link_to image_tag(post.image_url(:thumb)), post.image_url, target: :_blank
+      .font-small.border-top.padding-top-5
+        %span= link_to "#{post.favorites_count} いいね", favorited_by_post_url(post)
+        %span= link_to post.created_at, post
